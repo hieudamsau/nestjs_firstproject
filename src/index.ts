@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm"
+import Auth from "./auth/auth.entity";
 import Test from "./test/test.entity"
 
 const myDataSource = new DataSource({
@@ -8,7 +9,7 @@ const myDataSource = new DataSource({
     username: "dev",
     password: "Smt3ch@2022",
     database: "nestjs_demo",
-    entities: [Test],
+    entities: [Test, Auth],
     synchronize: true,
     logging: false,
 })

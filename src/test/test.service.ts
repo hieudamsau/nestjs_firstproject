@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TaskStatus } from './test-statusl';
+
 import Test from './test.entity';
 import { v4 as uuid} from 'uuid';
 import { CreateTestDto } from './DTO/create-test.dto';
@@ -11,19 +11,24 @@ export class TestService {
         
     // };
 
-    // getTasksById() {
-
-    // };
-
-   async createTasks(createTestDto : CreateTestDto) {
-        return await this.testRepository.save(createTestDto)
+    async getTestById(id : number)  {
+        const task = await this.testRepository.findOne({where : {id : id}});
+        return task;
     };
 
-    deleteTasks(id : string) : void {
+   async createTasks(createTestDto : CreateTestDto) {
+        const task = await this.testRepository.save(createTestDto)
+        return task;
+    };
+
+    async deleteTest(id : number) {
+        const result = await this.testRepository.delete(id);
+        return result;
     }
 
-    updateStatusTask(id : string){
-    
+    async updateTest(id : number, data : CreateTestDto){
+        const result = await this.testRepository.update(id,data);
+        return result;
     }
     
 }

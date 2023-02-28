@@ -1,6 +1,5 @@
 import { Body, Controller, Get , Param, Post , Delete , Put } from '@nestjs/common';
 import { CreateTestDto } from './DTO/create-test.dto';
-import {TaskStatus } from './test-statusl';
 import Test from './test.entity';
 import { TestService } from './test.service';
 
@@ -14,24 +13,45 @@ export class TestController {
     //     return this.testService.getAllTask();
     // };
     @Get('/:id')
-    getTaskById(@Param('id') id : string)  {
-        
+    async getTestById(@Param('id') id : number)  {
+        try {
+            const task = await this.testService.getTestById(id)
+            return task;
+        } catch (err){
+            return err;
+        }
     }
 
 
     @Post()
-    createTask(@Body() createTestDto : CreateTestDto)  {
-        this.testService.createTasks(createTestDto);
+    async createTask(@Body() createTestDto : CreateTestDto)  {
+        try {
+           const task = await this.testService.createTasks(createTestDto);
+           return task;
+        } catch (err) {
+            return err;
+        }
     }
 
     @Delete('/:id')
-    deleteTask(@Param('id') id : string) : void{
-        
+    async deleteTask(@Param('id') id : number) {
+        try {
+            const result = await this.testService.deleteTest(id);
+            return result;
+        } catch (err) {
+            return err;
+        }
     }
 
     @Put('/:id')
-    updateTask(@Param('id') id : string, @Body('status') status : TaskStatus) {
-       
+     updateTest(@Param('id') id : number,@Body() createDto : CreateTestDto) {
+        try {
+            const result = this.testService.updateTest(id,createDto);
+            console.log(createDto)
+            return result;
+        } catch (err) {
+            return err
+        }
     }
 }
 

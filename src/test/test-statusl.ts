@@ -1,12 +1,5 @@
-export interface Tasks{
-    id : string;
-    title : string;
-    description : string;
-    status : TaskStatus;
-}
-
-export enum TaskStatus{
-    OPEN = 'OPEN',
-    INPROGRESS = 'INPROGRESS',
-    DONE = 'DONE',
+export enum TestStatus{
+    OPEN = 0,
+    INPROGRESS = 1,
+    DONE = 2,
 }
