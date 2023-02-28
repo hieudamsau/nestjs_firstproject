@@ -1,8 +1,8 @@
-import { Body, Controller, Get , Param, Post , Delete , Put } from '@nestjs/common';
+import { Body, Controller, Get , Param, Post , Delete , Put, UseGuards } from '@nestjs/common';
 import { CreateTestDto } from './DTO/create-test.dto';
 import Test from './test.entity';
 import { TestService } from './test.service';
-
+import { AuthGuard } from "@nestjs/passport"
 @Controller('test')
 export class TestController {
     constructor(private testService : TestService){
@@ -34,6 +34,7 @@ export class TestController {
     }
 
     @Delete('/:id')
+    @UseGuards(AuthGuard())
     async deleteTask(@Param('id') id : number) {
         try {
             const result = await this.testService.deleteTest(id);
