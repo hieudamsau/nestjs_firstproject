@@ -2,6 +2,8 @@ import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './DTO/create-authDto';
 import { AuthGuard } from "@nestjs/passport"
+import { AdminGuard } from './jwt.strategy-admin';
+import { JwtStrategy } from './jwt.strategy';
 @Controller('auth')
 export class AuthController {
     constructor(private authService : AuthService){
@@ -19,10 +21,9 @@ export class AuthController {
     }
 
     @Post('/test')
-    @UseGuards(AuthGuard())
-    test(@Req() req : string){
-        console.log(req)
-
+    @UseGuards(AuthGuard('admin'))
+    test(@Req() req : any){
+        console.log(req.user)
     }
 
 }

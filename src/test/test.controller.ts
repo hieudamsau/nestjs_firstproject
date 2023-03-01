@@ -3,6 +3,7 @@ import { CreateTestDto } from './DTO/create-test.dto';
 import Test from './test.entity';
 import { TestService } from './test.service';
 import { AuthGuard } from "@nestjs/passport"
+import { AdminGuard } from 'src/auth/jwt.strategy-admin';
 @Controller('test')
 export class TestController {
     constructor(private testService : TestService){
@@ -13,9 +14,9 @@ export class TestController {
     //     return this.testService.getAllTask();
     // };
     @Get('/:id')
-    async getTestById(@Param('id') id : number)  {
+    getTestById(@Param('id') id : number)  {
         try {
-            const task = await this.testService.getTestById(id)
+            const task = this.testService.getTestById(id)
             return task;
         } catch (err){
             return err;
@@ -24,9 +25,9 @@ export class TestController {
 
 
     @Post()
-    async createTask(@Body() createTestDto : CreateTestDto)  {
+    createTask(@Body() createTestDto : CreateTestDto)  {
         try {
-           const task = await this.testService.createTasks(createTestDto);
+           const task = this.testService.createTasks(createTestDto);
            return task;
         } catch (err) {
             return err;
@@ -34,10 +35,10 @@ export class TestController {
     }
 
     @Delete('/:id')
-    @UseGuards(AuthGuard())
-    async deleteTask(@Param('id') id : number) {
+    @UseGuards(AdminGuard)
+     deleteTask(@Param('id') id : number) {
         try {
-            const result = await this.testService.deleteTest(id);
+            const result = this.testService.deleteTest(id);
             return result;
         } catch (err) {
             return err;

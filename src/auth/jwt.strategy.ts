@@ -7,7 +7,7 @@ import Auth from "./auth.entity";
 import { JwtPayload } from "./jwt-payload-interface";
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy){
+export class JwtStrategy extends PassportStrategy(Strategy, 'user'){
     auRepositiory = myDataSource.getRepository(Auth);
     constructor(){
         super({
@@ -21,6 +21,9 @@ export class JwtStrategy extends PassportStrategy(Strategy){
         if(!user){
             throw new UnauthorizedException();
         }
-        return user;
+        return {
+            id : user.id,
+            user_name : user.user_name
+        };
     }
 }
