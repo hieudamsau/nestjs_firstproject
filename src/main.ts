@@ -12,8 +12,10 @@ async function bootstrap() {
   .catch(err =>{
     console.log(err);
   })
+ 
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
+  
   console.log("Listen in host 3000")
 }
 bootstrap();
