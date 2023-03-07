@@ -21,7 +21,7 @@ export class AuthService {
             await this.authRepository.save(data);
             return 'Sign up success !';
         } catch (err) {
-            console.log(err.code);
+            console.log(err);
             if (err.code === "ER_DUP_ENTRY") {
                 throw new ConflictException('User exist !');
             }

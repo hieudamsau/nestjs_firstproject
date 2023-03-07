@@ -16,7 +16,7 @@ import { BankFactory } from 'src/auth/factory/Bank-factory';
     TestModule,
     TypeOrmModule,
     UserModule,
-    AuthModule,
+ 
   ],
   controllers: [AppController],
   providers: [AppService],
