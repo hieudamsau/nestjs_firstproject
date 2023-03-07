@@ -6,8 +6,8 @@ import "reflect-metadata";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { StudentModule } from './student/student.module';
-
+import { BankFactory } from 'factory/Bank-factory';
+import { Processing } from './observer/processing';
 
 
 @Module({
@@ -16,10 +16,9 @@ import { StudentModule } from './student/student.module';
     TypeOrmModule,
     UserModule,
     AuthModule,
-    StudentModule,
  
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,Processing,BankFactory],
 })
 export class AppModule {}
