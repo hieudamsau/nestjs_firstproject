@@ -1,7 +1,7 @@
 
 import { Observer } from "./observer-subcriber";
 import { WeatherStation } from "./observer-weatherStation";
-import { Subject } from "./subject-interface";
+
 
 
 export class Heat implements Observer{
@@ -18,3 +18,5 @@ export class Heat implements Observer{
 
     }
 }
+
+

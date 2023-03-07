@@ -6,10 +6,8 @@ import "reflect-metadata";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-// import { ClientController } from './client/client.controller';
-// import { ClientController } from './kafka/client/client.controller';
-import { WeatherStation } from './observer/observer-weatherStation';
 import { Processing } from './observer/processing';
+import { BankFactory } from 'factory/Bank-factory';
 
 
 
@@ -21,6 +19,6 @@ import { Processing } from './observer/processing';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService,Processing],
+  providers: [AppService,Processing,BankFactory],
 })
 export class AppModule {}
