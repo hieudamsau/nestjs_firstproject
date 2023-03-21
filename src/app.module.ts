@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { Processing } from './observer/processing';
-import { BankFactory } from 'src/auth/factory/Bank-factory';
+import { BankFactory } from 'src/factory/Bank-factory';
 
 
 

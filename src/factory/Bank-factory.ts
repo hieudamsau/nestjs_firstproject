@@ -16,7 +16,7 @@ export class BankFactory{
     }
 
 }
-
-
 let a = new BankFactory();
 a.viewBank(BankName.Techcombank);
+
+

@@ -13,4 +13,4 @@ export class Processing {
 
 let process = new Processing();
 process.processWeatherstation(20);
-process.processWeatherstation(30)
+process.processWeatherstation(30) 
