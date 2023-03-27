@@ -11,25 +11,25 @@ export class ConcreateHouse implements HouseBuilder{
         this.house = new House();
     }
     buildWall(): void {
-        console.log("Building wall...")
+        this.house.parts.push("Building wall");
     }
     buildFloor(): void {
-        console.log("Building floor...")
+        this.house.parts.push("Building floor");
     }
     buildDoor(): void {
-        console.log("Building door...")
+        this.house.parts.push("Building door");
     }
     buildWindow(): void {
-        console.log("Building window...")
+        this.house.parts.push("Building wall door");
     }
     buildRoof(): void {
-        console.log("Building roof...")
+        this.house.parts.push("Building wall roof");
     }
     buildPool(): void {
-        console.log("Building pool...")
+        this.house.parts.push("Building wall pool");
     }
     buildGarden(): void {
-        console.log("Bulding garden...")
+        this.house.parts.push("Building garden");
     }
     public getHouse() : House {
         const result = this.house;
